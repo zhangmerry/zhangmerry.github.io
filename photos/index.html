@@ -29,7 +29,7 @@
   <style type="text/css">
   
     #container.show {
-      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+      background: rgba(145, 133, 151, 0.3);
     }
   </style>
   
@@ -43,7 +43,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: rgba(201, 153, 121, 0.3)"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -59,9 +59,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/categories">分类</a></li>
+				<li><a href="/categories/随笔/">随笔</a></li>
 	        
-				<li><a href="/tags">标签</a></li>
+				<li><a href="/categories/学习笔记/">学习笔记</a></li>
 	        
 			</ul>
 		</nav>
@@ -92,7 +92,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: rgba(201, 153, 121, 0.3)"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -131,9 +131,9 @@
 				
 					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories/随笔/">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags">标签</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories/学习笔记/">学习笔记</a></li>
 		        
 				</ul>
 			</nav>
@@ -377,7 +377,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">sublime</a>
               </li>
             
             <div class="clearfix"></div>
@@ -428,7 +436,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">每天学习一点点~</div>
   	  	
     	</section>
     
