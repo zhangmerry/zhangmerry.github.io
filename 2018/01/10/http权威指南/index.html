@@ -12,13 +12,33 @@
 <meta name="keywords" content="http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="http权威指南">
-<meta property="og:url" content="https://zhangmerry.github.io/2018/01/16/http权威指南/index.html">
+<meta property="og:url" content="https://zhangmerry.github.io/2018/01/10/http权威指南/index.html">
 <meta property="og:site_name" content="zhangmerry的博客">
 <meta property="og:description" content="最近在看《http权威指南》 一书,本文主要分享从中学习到的一些知识点~">
-<meta property="og:updated_time" content="2018-01-16T09:11:30.700Z">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/http方法.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/状态码.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/1.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/网络协议栈.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/connection.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/http连接.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/web服务器.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/代理的层次结构.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/代理请求的url.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/缓存命中.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/缓存的处理步骤.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/Cache-Control.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/http用户首部.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/认证的步骤.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/基本认证实例.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/SSL握手.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/常用的媒体类型.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/内容编码.png">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/有条件的请求类型.png">
+<meta property="og:updated_time" content="2018-02-26T05:01:46.215Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http权威指南">
 <meta name="twitter:description" content="最近在看《http权威指南》 一书,本文主要分享从中学习到的一些知识点~">
+<meta name="twitter:image" content="https://zhangmerry.github.io/images/http/http方法.png">
   
     <link rel="alternative" href="/atom.xml" title="zhangmerry的博客" type="application/atom+xml">
   
@@ -160,8 +180,8 @@
   
 
         
-        <a href="/2018/01/16/http权威指南/" class="archive-article-date">
-  	<time datetime="2018-01-16T07:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-16</time>
+        <a href="/2018/01/10/http权威指南/" class="archive-article-date">
+  	<time datetime="2018-01-10T07:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
 </a>
         
       </header>
@@ -170,7 +190,43 @@
       
         <p>最近在看《http权威指南》 一书,本文主要分享从中学习到的一些知识点~</p>
 <a id="more"></a>
-<p>http的默认端口 80<br>https的默认端口 443<br>http是应用层协议</p>
+<h2 id="web基础"><a href="#web基础" class="headerlink" title="web基础"></a>web基础</h2><p>http的默认端口 80<br>https的默认端口 443<br>http是应用层协议</p>
+<p>报文的组成：起始行  首部  主体<br>http方法：<br><img src="/images/http/http方法.png" alt="http方法"></p>
+<p>状态码分类：<br><img src="/images/http/状态码.png" alt="状态码分类"><br>首部：<br>通用缓存首部： cache-control  pragama<br>安全请求首部： authorization  cookie  cookie2<br>实体缓存首部： expires(实体不再有效要从原始的源端再次获取此实体的日期和时间)</p>
+<p>用户在浏览器中输入网址，点击确认，浏览器都做了什么？<br><img src="/images/http/1.png" alt="http"></p>
+<p>http和https的网络协议栈<br>（https就是在http和tcp之间插入了一个称为TLS或SSL的密码加密层）<br><img src="/images/http/网络协议栈.png" alt="网络协议栈"></p>
+<p>TCP慢启动：TCP连接会随着时间进行自我“调谐”，起初会限制连接的最大速度，如果数据成功传输，会随着时间的推移提高传输的速度<br>connection首部：（在将报文转发出去之前，必须删除connection首部以及connection中列出的所有首部字段）<br><img src="/images/http/connection.png" alt="connection"></p>
+<p>http连接优化：<br>并行连接 ——  通过多条TCP连接发起并发的http请求<br>持久连接 ——  重用TCP连接，以消除连接及关闭延时<br>管道化连接 ——  通过共享的TCP连接发起并发的HTTP请求  </p>
+<p>http/1.0  connection:keep-Alive  持久连接<br>http/1.1  persistent connection 默认激活的，连接是持久的</p>
+<p>http连接比较：<br><img src="/images/http/http连接.png" alt="http连接"></p>
+<h2 id="HTTP结构"><a href="#HTTP结构" class="headerlink" title="HTTP结构"></a>HTTP结构</h2><p>web服务器请求的步骤：<br><img src="/images/http/web服务器.png" alt="web服务器"></p>
+<p>—–代理—–<br>代理连接的是两个或多个使用相同协议的应用程序，网关连接的是两个或多个使用不同协议的端点<br>代理的作用：可以改善安全性、提高性能、节省费用<br>代理的几种使用方法： 儿童过滤器   文档访问控制   安全防火墙   web缓存   反向代理   内容路由器   转码器   匿名者</p>
+<p>代理的层次结构：（靠近服务器的被称为父代理，靠近客户端的被称为子代理）<br><img src="/images/http/代理的层次结构.png" alt="代理的层次结构"><br>代理的层次结构也有可能是动态的，会动态选择父代理</p>
+<p>使客户端流量流向代理的方法： 修改客户端配置   修改网络（拦截代理）  修改DNS的命名空间   修改web服务器重定向到代理<br>代理请求的url和服务器请求的url不同的地方：前者包含完整的url，后者只包含部分url（没有方案、主机或者端口）<br>浏览器请求的url：<br><img src="/images/http/代理请求的url.png" alt="代理请求的url"></p>
+<p>追踪报文：<br>via首部字段用于记录报文的转发，列出了与报文途经的每个中间节点（代理或网关）有关的信息。<br>eg:  via: https/1.1 cache.joes-hardware.com, 1.0 proxy.irenes-isp.net<br>语法：最多包含四个组件， 一个可选的协议名（默认http）、一个必选的协议版本、一个必选的节点名、一个可选的描述性注释<br>TRACE方法：可以跟踪代理链传输的请求报文，观察报文经过了哪些代理、每个代理是如何对请求报文进行修改的<br>TRACE响应的Content-Type为message/http<br>Max-Forwards:表示这条请求报文还可以被转发的次数<br>OPTIONS请求：发现设备支持的功能<br>Allow首部：列出了请求url标识的资源所支持的方法列表</p>
+<p>—–缓存—–<br>使用缓存的优点：<br>减少了冗余的数据传输<br>缓解了网络瓶颈的问题。不需要更多的带宽就能更快的加载页面<br>降低了对原始服务器的要求。服务器可以更快的响应，避免过载的出现<br>降低了距离延时，因为从更远的地方加载页面会更慢一些<br>缓存命中：用已有的副本为某些到达缓存的请求提供服务<br>缓存未命中：到达缓存的请求可能会由于没有副本可用，被转发到原始服务器</p>
+<p><img src="/images/http/缓存命中.png" alt="缓存命中"><br>If-Modified-Since首部：对已缓存的对象再验证的请求   若未被修改，则返回HTTP 304 NOT Modified响应</p>
+<p>缓存的处理步骤：<br><img src="/images/http/缓存的处理步骤.png" alt="缓存的处理步骤"></p>
+<p>过期响应首部：<br>http/1.1 Cache-Control：max-age  max-age定义了文档的最大使用周期，从第一次生成文档到文档不再新鲜、无法使用为止，最大的合法生存时间（以秒为单位） Cache-control: max-age=484200<br>http/1.0+  Expires   指定一个绝对的过期日期。如果过期日期已经过了，就说明文档不再新鲜了   Expires:Fri, 02 Feb 2018 08:28:41 GMT<br>缓存再验证中使用的条件首部：<br>If-Modified-Since：<data>   如果从指定日期之后文档被修改过了，就执行请求的方法。若未发生变化则返回304 Not Modified响应，否则返回带有新主体的200响应<br>If-None-Match:<tag>  如果已缓存标签与服务器文档中的标签有所不同，就执行所请求的方法<br>弱验证器（加前缀”W/“）允许对一些内容进行修改： 例如:If-None-Match:W/“2.6”  </tag></data></p>
+<p>Cache-Control：no-store   禁止缓存对响应进行复制<br>Cache-Control：no-cache   实际上是可以存储在本地缓存区中的。只是在与原始服务器进行新鲜度再验证之前，缓存不能将其提供给客户端使用<br>Pragma：no-cache    兼容于HTTP/1.0+<br>Cache-Control：max-age<br>Cache-Control：s-maxage   (仅适用于共享（共有）缓存)<br>Cache-Control：must-revalidate   在事先没有跟原始服务器进行再验证的情况下，不能提供这个对象的陈旧副本</p>
+<p>Cache-Control请求指令：<br><img src="/images/http/Cache-Control.png" alt="Cache-Control"></p>
+<p><meta bhttp-equiv="">标签控制HTML缓存</p>
+<p>—–集成点：网关、隧道及中继—–<br>网关：在http和其他协议及应用程序之间起到接口作用<br>CGI（common gateway interface）通用网关接口<br>隧道：通过http应用程序访问非http协议的应用程序（位于客户端和网关之间，用http的connect方法建立起来的）<br>http中继：没有完全遵循http规范的简单http代理</p>
+<p>—–Web机器人—–<br>限制机器人访问哪些页面： 鼓励但不强制使用<br>1、robots.txt文件（包含的信息说明了机器人可以访问服务器的哪些部分）<br>2、html的robot-control元标签</p>
+<p><meta name="robots" content=""><br>content选项： index（可以对页面内容进行索引）  follow（可以爬行页面上的任何外连链接） noarchive（不应该缓存这个页面的本地副本）  all(等价于index、follow)   none(等价于noindex、nofollow)<br>搜索引擎的meta 标签：description   keywords</p>
+<p>—–HTTP-NG—–<br>未来的新的HTTP版本</p>
+<p>—–客户端识别与cookie机制—–<br>承载用户相关信息的http首部<br><img src="/images/http/http用户首部.png" alt="http用户首部"><br>cookie版本0  Set-Cookie  Cookie<br>cookie版本1  Set-Cookie2   Cookie2</p>
+<p>—–HTTP认证形式—–<br>基本认证机制–<br>认证的步骤：<br><img src="/images/http/认证的步骤.png" alt="认证的步骤"><br>基本认证实例：<br><img src="/images/http/基本认证实例.png" alt="基本认证实例"><br>基本认证将（用冒号分隔）用户名和密码打包在一起，用Base-64编码<br>基本认证的安全缺陷：暴露用户名和密码</p>
+<p>摘要认证机制–<br>比基本认证安全的认证，   永远不会以铭文方式在网络上发送密码，而是会发送一个“指纹”或密码的“摘要”</p>
+<p>—–安全HTTP—–<br>使用https时，所有的http请求和响应数据在发送到网络之前，都要进行加密。<br>TLS（Transport Layer Security）传输安全层<br>在通过网络传输任何已加密的HTTP数据之前，SSL已经发送了一组握手数据来建立通信连接<br><img src="/images/http/SSL握手.png" alt="SSL握手"></p>
+<p>—–实体和编码—–<br>content-length指报文中实体主体的字节大小，这个大小是包含了所有的内容编码的。<br>除非使用了分块编码，否则content-length首部就是带有实体主体的报文必须使用的。<br>content-type首部说明的是原始实体主体的媒体类型。<br>常用的媒体类型：<br><img src="/images/http/常用的媒体类型.png" alt="常用的媒体类型"><br>内容编码:<br><img src="/images/http/内容编码.png" alt="内容编码"><br>Accept-Encoding:表示客户端支持的内容编码方式<br>使用传输编码是为了改变报文中的数据在网络上传输的方式。经过内容编码的报文，只是对报文的实体部分进行了编码，而经过传输编码的报文，编码作用在整个报文上，报文自身的机构发生了变化。<br>传输编码相关首部：  Transfer-Encoding：告知接收方对报文进行了何种编码    TE：用在请求首部，告知服务器可以使用哪些传输编码<br>分块编码：是一种传输编码；把报文分割为若干个大小已知的块，块之间是紧挨着发送的</p>
+<p>有条件的请求：仅当资源改变时才请求副本<br>有条件的请求类型：<br><img src="/images/http/有条件的请求类型.png" alt="有条件的请求类型"><br>范围请求：http允许客户端实际上只请求文档的一部分，或者说某个范围。 请求Range首部，响应Accept-Ranges首部说明可以接受的范围请求<br>差异编码：是http协议的一个扩展，通过交换对象改变的部分而不是完整的对象来优化传输性能。请求A-IM首部告诉服务器它愿意接受该页面的差异且列出算法，IM响应首部说明用于计算差异的算法</p>
+<p>—–国际化—–<br>服务器通过http协议的content-type首部中的charset参数和content-language首部告知客户端文档的字母表和语言，客户端发送Accept-Charset首部和Accept-Language首部告知服务器它理解哪些字符集编码算法和语言以及其中的优先顺序。<br>Accept-charset:列出了客户端支持的字符编码方案， 响应的字符集是有服务器通过Content-Type响应首部的charset参数带回来的。</p>
+<p>—–内容协商与转码—–</p>
+<p>—–web主机托管—–</p>
+<p>—–发布系统—–</p>
+<p>—–重定向与负载均衡—–</p>
+<p>—–日志记录与使用情况跟踪—–</p>
 
       
 
@@ -272,7 +328,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://zhangmerry.github.io/2018/01/16/http权威指南/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://zhangmerry.github.io/2018/01/10/http权威指南/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,6 +341,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/02/26/每天一篇前端文章/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          每天一篇前端文章
+        
+      </div>
+    </a>
   
   
     <a href="/2018/01/04/vue-cli/" id="article-nav-older" class="article-nav-link-wrap">
@@ -406,11 +471,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -418,7 +483,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
               </li>
              
               <li class="article-tag-list-item">
