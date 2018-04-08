@@ -34,7 +34,8 @@
 <meta property="og:image" content="https://zhangmerry.github.io/images/http/常用的媒体类型.png">
 <meta property="og:image" content="https://zhangmerry.github.io/images/http/内容编码.png">
 <meta property="og:image" content="https://zhangmerry.github.io/images/http/有条件的请求类型.png">
-<meta property="og:updated_time" content="2018-02-26T05:01:46.215Z">
+<meta property="og:image" content="https://zhangmerry.github.io/images/http/通用的重定向方法.png">
+<meta property="og:updated_time" content="2018-02-28T09:40:31.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http权威指南">
 <meta name="twitter:description" content="最近在看《http权威指南》 一书,本文主要分享从中学习到的一些知识点~">
@@ -222,11 +223,11 @@
 <p>—–实体和编码—–<br>content-length指报文中实体主体的字节大小，这个大小是包含了所有的内容编码的。<br>除非使用了分块编码，否则content-length首部就是带有实体主体的报文必须使用的。<br>content-type首部说明的是原始实体主体的媒体类型。<br>常用的媒体类型：<br><img src="/images/http/常用的媒体类型.png" alt="常用的媒体类型"><br>内容编码:<br><img src="/images/http/内容编码.png" alt="内容编码"><br>Accept-Encoding:表示客户端支持的内容编码方式<br>使用传输编码是为了改变报文中的数据在网络上传输的方式。经过内容编码的报文，只是对报文的实体部分进行了编码，而经过传输编码的报文，编码作用在整个报文上，报文自身的机构发生了变化。<br>传输编码相关首部：  Transfer-Encoding：告知接收方对报文进行了何种编码    TE：用在请求首部，告知服务器可以使用哪些传输编码<br>分块编码：是一种传输编码；把报文分割为若干个大小已知的块，块之间是紧挨着发送的</p>
 <p>有条件的请求：仅当资源改变时才请求副本<br>有条件的请求类型：<br><img src="/images/http/有条件的请求类型.png" alt="有条件的请求类型"><br>范围请求：http允许客户端实际上只请求文档的一部分，或者说某个范围。 请求Range首部，响应Accept-Ranges首部说明可以接受的范围请求<br>差异编码：是http协议的一个扩展，通过交换对象改变的部分而不是完整的对象来优化传输性能。请求A-IM首部告诉服务器它愿意接受该页面的差异且列出算法，IM响应首部说明用于计算差异的算法</p>
 <p>—–国际化—–<br>服务器通过http协议的content-type首部中的charset参数和content-language首部告知客户端文档的字母表和语言，客户端发送Accept-Charset首部和Accept-Language首部告知服务器它理解哪些字符集编码算法和语言以及其中的优先顺序。<br>Accept-charset:列出了客户端支持的字符编码方案， 响应的字符集是有服务器通过Content-Type响应首部的charset参数带回来的。</p>
-<p>—–内容协商与转码—–</p>
-<p>—–web主机托管—–</p>
-<p>—–发布系统—–</p>
-<p>—–重定向与负载均衡—–</p>
+<p>—–内容协商与转码—–<br>有3种方法可以决定服务器上哪个页面最适合客户端：客户端驱动的协商、服务器驱动的协商、透明协商<br>质量值：q值的范围从0.0~1.0（优先级最低到优先级最高）  如：Accept-Language:en;q=0.5,fr;q=1.0</p>
+<p>—–web主机托管—–<br>Web主机托管：对内容资源的存储、协调以及管理的职责<br>虚拟服务器请求缺乏主机信息，因为http/1.0请求在报文中只发送了URL的路径部分。、解决方法：1、通过url路径进行虚拟主机托管 2、通过端口号进行主机托管  3、通过ip地址进行主机托管  4、通过host首部进行主机托管（host首部描述了所请求的资源所在的因特网主机和端口号）<br>主原始服务器：包含原始内容的服务器<br>复制原始服务器：从主原始服务器接收内容的镜像服务器<br>内容分发网络（CDN）</p>
+<p>—–重定向与负载均衡—–<br><img src="/images/http/通用的重定向方法.png" alt="通用的重定向方法"><br>DNS的重定向算法：轮转  负载均衡算法   邻接路由算法   故障屏蔽算法<br>ICP（因特网缓存协议）：允许缓存在其兄弟缓存中查找命中的内容<br>HTCP（超文本缓存协议）：允许兄弟缓存之间通过URL和所有的请求及响应首部来相互查询文档是否存在</p>
 <p>—–日志记录与使用情况跟踪—–</p>
+<p>至此，这本书算是磕磕绊绊的看完了~</p>
 
       
 
@@ -479,15 +480,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
             
             <div class="clearfix"></div>
