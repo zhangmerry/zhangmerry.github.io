@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://zhangmerry.github.io/images/前端文章/美团离线化方案.jpg">
 <meta property="og:image" content="https://zhangmerry.github.io/images/前端文章/构造函数.png">
 <meta property="og:image" content="https://zhangmerry.github.io/images/前端文章/prototype和__proto__.png">
-<meta property="og:updated_time" content="2018-04-16T07:52:30.741Z">
+<meta property="og:updated_time" content="2018-04-25T10:21:47.286Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天一篇前端文章_4月">
 <meta name="twitter:description" content="前端开发博客2018年4月份的">
@@ -189,6 +189,7 @@
 <h3 id="8、js中的私有变量"><a href="#8、js中的私有变量" class="headerlink" title="8、js中的私有变量."></a>8、<a href="https://juejin.im/post/5ab755d76fb9a028cf326e71?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com" target="_blank" rel="noopener">js中的私有变量</a>.</h3><p>没啥可写的~<br>平常用到的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="keyword">function</span>(win)&#123;</span><br><span class="line">    var page = (<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        var defaultConfig = &#123;&#125;;</span><br><span class="line">        var Page = <span class="keyword">function</span>(config)&#123;</span><br><span class="line">            this.config = config || defaultConfig;</span><br><span class="line">        &#125;;</span><br><span class="line">        $.extend(Page.prototype, &#123;</span><br><span class="line">            init: <span class="function"><span class="title">function</span></span>()&#123;&#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> Page;</span><br><span class="line">    &#125;)();</span><br><span class="line">    </span><br><span class="line">    win.page = page;</span><br><span class="line"></span><br><span class="line">&#125;)(window);</span><br></pre></td></tr></table></figure></p>
 <h3 id="9、万物皆空之-JavaScript-原型"><a href="#9、万物皆空之-JavaScript-原型" class="headerlink" title="9、万物皆空之 JavaScript 原型."></a>9、<a href="https://www.tuicool.com/articles/BN7bi2F?utm_medium=hao.caibaojian .com&amp;utm_source=hao.caibaojian.com" target="_blank" rel="noopener">万物皆空之 JavaScript 原型</a>.</h3><p>讲的也挺好的~<br>javascript万物皆对象，而对象本身是通过构造函数实现的~<br><img src="/images/前端文章/构造函数.png" alt="构造函数"><br><img src="/images/前端文章/prototype和__proto__.png" alt="prototype和__proto__"><br>原型链的顶端为null  Object.prototype.<strong>proto</strong> ——&gt; nul<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">只有函数对象具有prototype属性；</span><br><span class="line">prototype 和 __proto__ 都是 JavaScript 在定义一个函数或对象时自动创建的 预定义属性 。</span><br><span class="line">prototype 被实例的 __proto__ 所指向（被动）</span><br><span class="line">__proto__ 指向构造函数的 prototype （主动）</span><br><span class="line">总结一下</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">fn</span></span>()&#123;&#125;</span><br><span class="line">fn.__proto__ === Function.prototype</span><br><span class="line">fn.prototype.__proto__ === Object.prototype</span><br><span class="line">Function.__proto__ === Function.prototype</span><br><span class="line">Function.prototype.__proto__ === Object.prototype</span><br><span class="line"></span><br><span class="line">var o = &#123;&#125;;</span><br><span class="line">o.__proto__ === Object.prototype</span><br><span class="line">Object.__proto__ === Function.prototype</span><br><span class="line">Object.prototype.__proto__ === null </span><br><span class="line"></span><br><span class="line">var a = 1;</span><br><span class="line">a.__proto__ === Number.prototype</span><br><span class="line">Number.__proto__ === Function.prototype   //Number是一个构造函数   同理javascript的6大内置函数对象String Boolean Array RegExp Date </span><br><span class="line">Number.prototype.__proto__ === Object.prototype</span><br><span class="line"></span><br><span class="line">var b = <span class="literal">false</span>;</span><br><span class="line">b.__proto__ === Boolean.prototype</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">扩展延伸 --- 实现A继承B</span><br><span class="line">var A = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">var B = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">B.prototype = &#123;</span><br><span class="line">    constructor: B,</span><br><span class="line">    b:1</span><br><span class="line">&#125;</span><br><span class="line">A.prototype = new B();</span><br><span class="line">var a = new A();</span><br><span class="line">console.log(a.b);     //1</span><br></pre></td></tr></table></figure>
+<h3 id="10、vue-数据绑定实现的核心-Object-defineProperty"><a href="#10、vue-数据绑定实现的核心-Object-defineProperty" class="headerlink" title="10、vue 数据绑定实现的核心 Object.defineProperty()"></a>10、vue 数据绑定实现的核心 Object.defineProperty()</h3><p><a href="https://blog.csdn.net/qianqianstd/article/details/75906746" target="_blank" rel="noopener">https://blog.csdn.net/qianqianstd/article/details/75906746</a></p>
 
       
 
@@ -304,18 +305,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/08/javaScript DOM编程艺术/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/04/05/vue-cli仿饿了么(2)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          javaScript DOM编程艺术
+          vue-cli仿饿了么(2)
         
       </div>
     </a>
   
   
-    <a href="/2018/03/06/一周两道js编程题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">一周两道js编程题</div>
+    <a href="/2018/03/12/vue-cli仿饿了么(1)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue-cli仿饿了么(1)</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -433,7 +434,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -441,11 +442,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">sublime</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">sublime</a>
               </li>
              
               <li class="article-tag-list-item">
